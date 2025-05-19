@@ -1,0 +1,53 @@
+.homepage-container {
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.homepage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.page-title {
+  flex-grow: 1;
+  font-size: 24px;
+}
+
+.nav-link {
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}
+
+.food-gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.food-item {
+  width: 20%;
+  cursor: pointer;
+}
+
+.food-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.food-name {
+  margin-top: 8px;
+  font-weight: 500;
+}
