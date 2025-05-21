@@ -1,101 +1,123 @@
+/* === TOP SIGN-UP BAR === */
+.top-signup-bar {
+  width: 100%;
+  background-color: #6e3c61;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.signup-link {
+  color: #ffcc70;
+  margin-left: 8px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* === FOOD PAGE BASE === */
 .foodpage-container {
-  padding: 20px;
-  font-family: sans-serif;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffdfb;
+  color: #333;
+  max-width: 1200px;
+  margin: auto;
 }
-
-.foodpage-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.foodpage-content {
-  display: flex;
-  gap: 20px;
-}
-
-.foodpage-left img {
-  max-width: 300px;
-  border-radius: 10px;
-}
-
-.foodpage-middle {
-  flex: 1;
-  padding: 10px;
-  background: #f5f5f5;
-  border-radius: 10px;
-}
-
-.foodpage-right {
-  width: 250px;
-  padding: 10px;
-  border-left: 2px solid #ccc;
-}
-
+/* === HEADER & NAV === */
 .foodpage-header {
   display: flex;
   justify-content: flex-end;
-  padding: 10px 20px;
+  align-items: center;
+  margin-bottom: 30px;
 }
-
 .nav-links {
   display: flex;
   gap: 20px;
 }
-
 .nav-link {
   cursor: pointer;
   font-weight: bold;
   color: #333;
   text-decoration: underline;
 }
-
 .nav-link:hover {
   color: #ff6f61;
 }
-
-.foodpage-middle ul {
-  padding-left: 24px;
-  margin-top: 12px;
-  list-style-type: disc; /* You can use: disc, circle, square, none */
+.homepage-header {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid #eee;
 }
-
-.foodpage-middle li {
-  font-size: 16px;          /* Change font size */
-  font-family: 'Segoe UI', sans-serif;
-  font-style: italic;  /* Set font */
-  color: #333;              /* Text color */
-  margin-bottom: 8px;       /* Spacing between steps */
-  line-height: 1.6;         /* Line spacing */
-}
-
-.food-story {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  text-align: left;
-  color: #444;
-  background-color: #fdfdfd;
-  padding: 10px;
-  border-left: 4px solid #ffb347;
-  border-radius: 6px;
-}
-
-.foodpage-left {
+.header-inner {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  max-width: 300px;
+  padding: 16px 20px;
+}
+.logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.main-nav {
+  display: flex;
+  gap: 20px;
+}
+.nav-link {
+  font-weight: 600;
+  color: #333;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #aa4465;
 }
 
+/* Hero Banner */
+.hero-banner {
+  width: 100%;
+  padding: 40px 0;
+  text-align: center;
+}
+.hero-title {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #333;
+  position: relative;
+  display: inline-block;
+}
+.hero-title::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 60%;
+  margin: 10px auto 0;
+  background-color: #d67e6d;
+  border-radius: 2px;
+}
+
+
+/* === PAGE LAYOUT === */
+.foodpage-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* === LEFT COLUMN (Image + Story) === */
+.foodpage-left {
+  flex: 1;
+  max-width: 320px;
+}
 .foodpage-left img {
-  max-width: 100%;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
 }
 
+/* === Story Block === */
 .food-story {
   margin-top: 20px;
-  font-size: 1rem;
-  line-height: 1.6;
   background: #fff8f0;
   color: #5a3e2b;
   border-left: 5px solid #ffa94d;
@@ -104,7 +126,6 @@
   font-style: italic;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
 .story-heading {
   margin-bottom: 10px;
   font-size: 1.1rem;
@@ -112,6 +133,14 @@
   font-weight: bold;
 }
 
+/* === MIDDLE COLUMN (Steps) === */
+.foodpage-middle {
+  flex: 2;
+  padding: 20px;
+  background: #fffdfa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 .recipe-title {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -120,47 +149,107 @@
   border-bottom: 2px solid #ffa94d;
   padding-bottom: 10px;
 }
-
 .recipe-steps {
-  background: #fffdfa;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   margin-top: 10px;
   text-align: left;
 }
-
 .steps-heading {
   font-size: 1.4rem;
   margin-bottom: 15px;
   color: #d35400;
 }
-
 .steps-content p {
   margin-bottom: 12px;
   position: relative;
   padding-left: 28px;
+  line-height: 1.6;
 }
-
 .steps-content p::before {
-  counter-increment: step;
   position: absolute;
   left: 0;
   top: 0;
-  font-weight: bold;
   background: #ffa94d;
-  color: #fff;
-  border-radius: 50%;
+  color: white;
   width: 22px;
   height: 22px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
   font-size: 0.85rem;
 }
 
+/* === RIGHT COLUMN (External URLs) === */
+.foodpage-right {
+  width: 250px;
+  padding: 20px;
+  border-left: 2px solid #eee;
+  background: #fafafa;
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.02);
+}
+.foodpage-right ul {
+  list-style: none;
+  padding-left: 0;
+}
+.foodpage-right li {
+  margin-bottom: 12px;
+}
+.foodpage-right a {
+  color: #0073e6;
+  font-weight: 500;
+}
+.foodpage-right a:hover {
+  text-decoration: underline;
+}
 
-
-
-
-
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .foodpage-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .foodpage-right {
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid #eee;
+  }
+}
+/* === FOOTER SECTION === */
+.site-footer {
+  width: 100%;
+  background-color: #6e3c61;
+  color: white;
+  text-align: center;
+  padding: 40px 0;
+}
+.footer-signup {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.signup-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.signup-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  min-width: 200px;
+}
+.signup-form button {
+  background-color: #f3b85b;
+  color: #333;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.signup-form button:hover {
+  background-color: #e2a542;
+}
