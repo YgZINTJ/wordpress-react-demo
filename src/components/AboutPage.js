@@ -1,16 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
+import SignupBar from "./SignupBar";
+import Header from "./Header";
+import Footer from "./Footer";
+import "../styles/AboutPage.css"; // Adjust the path if needed
 const AboutPage = () => {
   return (
-    <div className="content-container" style={{ padding: "60px 0", textAlign: "center" }}>
-      <h1>About This Project</h1>
-      <p>
-        {/* You can replace this with your own explanation */}
-        This website is a prototype built using React, WordPress REST API, and Firebase. 
-        It showcases recipe cards, category filters, and interactive design.
-      </p>
+  <>
+    {/* === Signup-bar ===*/}
+    <SignupBar/> 
+
+    {/* ===Header Navigation=== */}
+    <Header/>
+
+    {/* === Main === */}
+    <div className="about-container">
+      <div className="about-card">
+        <h1>About This Project</h1>
+        <p>
+          This website was created as part of a ISYS3004 assessment 2 project. It's built using React, WordPress REST API, and Firebase.  
+          The goal is to provide a sloid proof of understanding how to use these technologies to create a functional webpage.
+        </p>
+      </div>
+
+      <div className="about-card2">
+        <p>
+          However, the website is not partially finished as time is running out. 
+          Some pages such as the Recipe product page are not fully functional, as technoics using to create them are alreat shown in other pages.
+        </p>
+      </div>
     </div>
+    
+    {/* === Footer === */}
+    <Footer/>
+  </>
   );
 };
 

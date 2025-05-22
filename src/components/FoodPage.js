@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "../styles/FoodPage.css";
-import logo from '../assets/diet.png'; 
+import Header from './Header';
+import Footer from './Footer';
+import SignupBar from "./SignupBar";
 
 const FoodPage = () => {
   const { id } = useParams(); // Get ID from route
-  const navigate = useNavigate();
   const [foodData, setFoodData] = useState(null);
-  const [showMenu, setShowMenu] = useState(false);
   useEffect(() => {
   fetch(`https://isys3004project2.local/wp-json/wp/v2/food/${id}`)
     .then((res) => res.json())
@@ -57,32 +57,15 @@ const FoodPage = () => {
   if (!foodData) return <p>Loading...</p>;
     return (
   <>
-    <div className="top-signup-bar">
-      Our Recipes, Your Inbox.
-      <a href="#" className="signup-link">Sign up</a>
-    </div>
-    
-    <header className="homepage-header">
-      <div className="content-container header-inner">
-        <img src={logo} alt="Logo" className="logo" />
+    {/* === TOP SIGNUP BAR === */}
+    <SignupBar/>
+    {/* === HEADER === */}
+    <Header/>
 
-        <button
-          className="nav-toggle"
-          onClick={() => setShowMenu((prev) => !prev)}
-        >
-          ☰
-        </button>
-
-        <nav className={`main-nav ${showMenu ? "show" : ""}`}>
-          <a href="/" className="nav-link">Home</a>
-          <a href="/about" className="nav-link">About</a>
-          <a href="/more-recipes" className="nav-link">More Recipes</a>
-        </nav>
-      </div>
-    </header>
-
+    {/* === MAIN PAGE === */}
     <div className="foodpage-container">
       <div className="foodpage-content">
+        {/* === LEFT BLOCK === */}
         <div className="foodpage-left">
           <img src={foodData.image} alt={foodData.name} />
           <div className="food-story">
@@ -90,21 +73,19 @@ const FoodPage = () => {
             <div dangerouslySetInnerHTML={{ __html: foodData.story }} />
           </div>
         </div>
-
+        {/* === MIDDLE BLOCK === */}
         <div className="foodpage-middle">
           <section className="hero-banner">
             <h1 className="hero-title">{foodData.name}</h1>
           </section>
-          <h2 className="recipe-title">{foodData.name}</h2>
           <div className="recipe-steps">
-            <h3 className="steps-heading">How to Make It</h3>
             <div
               className="steps-content"
               dangerouslySetInnerHTML={{ __html: foodData.steps }}
             />
           </div>
         </div>
-
+        {/* === RIGHT BLOCK === */}
         <div className="foodpage-right">
           <h3>Buy Ingredients</h3>
           <ul>
@@ -119,18 +100,8 @@ const FoodPage = () => {
         </div>
       </div>
     </div>
-
-    {/* ✅ Footer also placed outside for full-width layout */}
-    <footer className="site-footer">
-      <div className="footer-signup">
-        <h3>Sign up for Email Updates</h3>
-        <form className="signup-form">
-          <input type="text" placeholder="First Name" />
-          <input type="email" placeholder="Email" />
-          <button type="submit">Go</button>
-        </form>
-      </div>
-    </footer>
+    {/* === FOOTER ===*/}
+    <Footer/>
   </>
 );
 };

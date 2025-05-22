@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // if using React Router
 // Go up from /components to /src, then down into /styles
 import "../styles/HomePage.css";
-import logo from "../assets/diet.png"; 
-
+import Header from './Header';
+import Footer from './Footer';
+import SignupBar from "./SignupBar";
 const HomePage = () => {
   const [foodItems, setFoodItems] = useState([]);
   const navigate = useNavigate(); 
@@ -20,8 +21,6 @@ const HomePage = () => {
       })
       .catch((err) => console.error("Error fetching food items:", err));
   }, []);
-  // State for menu
-  const [showMenu, setShowMenu] = useState(false); 
   // Sample category data
   const [categoryBlocks, setCategoryBlocks] = useState([]); 
   useEffect(() => {
@@ -46,29 +45,10 @@ const HomePage = () => {
     <div className="homepage-wrapper">
 
       {/* Top Sign-Up Bar (full width, stays outside container) */}
-      <div className="top-signup-bar">
-        <span>Our Recipes, Your Inbox.</span>
-        <a href="#footer-signup" className="signup-link">Sign up</a>
-      </div>
+      <SignupBar/>
 
       {/* Header Navigation */}
-      <header className="homepage-header">
-        <div className="content-container header-inner">
-          <div className="logo-nav-group">
-            <img src={logo} alt="Logo" className="logo" />
-          </div>
-
-          <button className="nav-toggle" onClick={() => setShowMenu((prev) => !prev)}>
-            ☰
-          </button>
-
-          <nav className={`main-nav ${showMenu ? "show" : ""}`}>
-            <a href="/" className="nav-link">Home</a>
-            <a href="/about" className="nav-link">About</a>
-            <a href="/more-recipes" className="nav-link">More Recipes</a>
-          </nav>
-        </div>
-      </header>
+      <Header/>
 
       {/* Hero Bar */}
       <section className="hero-banner">
@@ -81,7 +61,19 @@ const HomePage = () => {
       <main className="content-container">
         <div className="food-gallery">
           {foodItems.map((item) => (
-            <div className="food-item" onClick={() => handleClick(item.id)}>
+            <div
+              key={item.id}
+              className="food-item"
+              role="button"
+              tabIndex="0"
+              onClick={() => handleClick(item.id)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  handleClick(item.id);
+                }
+              }}
+              aria-label={`View recipe: ${item.name}`}
+            >
               <div className="food-image-container">
                 <img src={item.image} alt={item.name} />
                 <div className="overlay-text">View Recipe</div>
@@ -95,30 +87,39 @@ const HomePage = () => {
       {/*Category section*/}
       <section className="category-gallery content-container">
         <div className="category-grid">
-          {categoryBlocks.map((item) => (
-            <div className="category-item" onClick={() => navigate("/comingsoon")}>
+          {categoryBlocks.map((item, index) => (
+            <div
+              key={index}
+              className="category-item"
+              role="button"
+              tabIndex="0"
+              onClick={() => navigate("/comingsoon")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  navigate("/comingsoon");
+                }
+              }}
+              aria-label={`Explore ${item.name} recipes`}
+            >
               <div className="circle-overlay-wrapper">
                 <div className="image-overlay-container">
-                  <img src={item.image} alt={item.name} className="category-image" />
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="category-image"
+                  />
                   <div className="overlay-text">{item.name}</div>
                 </div>
               </div>
+
+              {/* ✅ This is the new text under the image */}
+              <p className="category-name">{item.name}</p>
             </div>
           ))}
         </div>
       </section>
-
       {/* Footer with Signup */}
-      <footer id="footer-signup" className="site-footer">
-        <div className="content-container footer-signup">
-          <h3>Sign up for Email Updates</h3>
-          <form className="signup-form">
-            <input type="text" placeholder="First Name" />
-            <input type="email" placeholder="Email" />
-            <button type="submit">Go</button>
-          </form>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };

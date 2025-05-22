@@ -1,0 +1,24 @@
+/* === TOP SIGN-UP BAR === */
+.top-signup-bar {
+  width: 100%;
+  background-color: #6e3c61;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+}
+.signup-link {
+  color: #ffcc70;
+  margin-left: 8px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+/* === FOOD PAGE BASE === */
+.foodpage-container {
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fffdfb;
+  color: #333;
+  max-width: 1200px;
+  margin: auto;
+}

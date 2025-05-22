@@ -1,0 +1,42 @@
+.comingsoon-content {
+  padding: 60px 20px;
+  text-align: center;
+  background: #fffaf5;
+  min-height: 300px;
+}
+
+.animated-message {
+  animation: fadeInSlide 1.4s ease-out both;
+  background: linear-gradient(145deg, #ffe3cb, #fff2e6);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  display: inline-block;
+  max-width: 700px;
+  margin: auto;
+}
+
+.animated-message h2 {
+  font-size: 2rem;
+  color: #d35400;
+  margin-bottom: 15px;
+}
+
+.animated-message p {
+  font-size: 1.1rem;
+  color: #5a3e2b;
+  line-height: 1.6;
+}
+
+/* === Keyframe animation === */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

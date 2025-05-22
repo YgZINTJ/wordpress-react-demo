@@ -1,16 +1,41 @@
+
+import logo from '../assets/diet.png'; // adjust if needed
+import '../styles/ComingSoon.css'; // ensure you create this
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import Footer from './Footer';
+import Header from './Header';
+
 
 const ComingSoonPage = () => {
+  const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="content-container" style={{ padding: "60px 0", textAlign: "center" }}>
-      <h1>Coming Soon</h1>
-      <p>
-        {/* You can replace this with your own explanation */}
-        This website is a prototype built using React, WordPress REST API, and Firebase. 
-        It showcases recipe cards, category filters, and interactive design.
-      </p>
-    </div>
-  );
-};
+      <>
+        {/* ✅ Top Thank You Bar */}
+        <div className="top-signup-bar">
+          Thank you for visiting!
+        </div>
+
+        {/* ✅ Header with logo & nav */}
+        <Header/>
+
+        {/* ✅ Hero Banner */}
+        <section className="hero-banner">
+          <h1 className="hero-title">Coming Soon</h1>
+        </section>
+
+        {/* ✅ Animated Content Block Placeholder */}
+        <main className="comingsoon-content">
+          <div className="animated-message">
+            <h2>I'm cooking up something special!</h2>
+            <p>Due to the insufficiency of time, this assessment has to end here.</p>
+            <p>Thank You for Browsing.</p>
+          </div>
+        </main>
+
+        {/* ✅ Footer Signup */}
+        <Footer/>
+      </>
+    );
+  };
+
 export default ComingSoonPage;

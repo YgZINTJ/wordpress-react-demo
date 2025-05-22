@@ -1,0 +1,66 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.about-container {
+  padding: 80px 20px;
+  background-color: #fffdf8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 60vh;
+  gap: 30px;               
+}
+
+
+.about-card {
+  background: linear-gradient(145deg, #ffe3cb, #fff8e1);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  animation: fadeInPop 1s ease-out both;
+  text-align: center;
+}
+
+.about-card h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #b3541e;
+}
+
+.about-card p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #5a3e2b;
+}
+
+.about-card2 {
+  background: linear-gradient(145deg, #ffe3cb, #fff8e1);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 700px;
+  animation: fadeInPop 1s ease-out both;
+  text-align: center;
+}
+
+.about-card2 p {
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* Animation */
+@keyframes fadeInPop {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
