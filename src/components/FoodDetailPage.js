@@ -11,7 +11,7 @@ const FoodPage = () => {
   const [checklistHtml, setChecklistHtml] = useState(""); // new state
 
   useEffect(() => {
-    fetch(`https://isys3004project2.local/wp-json/wp/v2/food/${id}`)
+    fetch(`https://isys3004a2.netlify.app//wp-json/wp/v2/food/${id}`)
       .then((res) => res.json())
       .then((data) => {
         const contentHTML = data.content.rendered;

@@ -9,7 +9,7 @@ const HomePage = () => {
   const [foodItems, setFoodItems] = useState([]);
   const navigate = useNavigate(); 
   useEffect(() => {
-    fetch("http://isys3004project2.local/wp-json/wp/v2/food")
+    fetch("https://isys3004a2.netlify.app//wp-json/wp/v2/food")
       .then((res) => res.json())
       .then((data) => {
         const mapped = data.map(item => ({
@@ -24,7 +24,7 @@ const HomePage = () => {
   // Sample category data
   const [categoryBlocks, setCategoryBlocks] = useState([]); 
   useEffect(() => {
-    fetch("https://isys3004project2.local/wp-json/wp/v2/featured_category")
+    fetch("https://isys3004a2.netlify.app//wp-json/wp/v2/featured_category")
       .then((res) => res.json())
       .then((data) => {
         const mapped = data.map((item) => ({
