@@ -1,7 +1,6 @@
 
 
 import '../styles/ComingSoon.css'; // ensure you create this
-import React, { useEffect, useState } from "react";
 import Footer from './Footer';
 import Header from './Header';
 
