@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="homepage-header">
       <div className="content-container header-inner">
-        <img src={logo} alt="Logo" className="logo" />
+        <img src={logo} alt="Logo" className="logo" loading="lazy"/>
         <button
           className="nav-toggle"
           onClick={() => setShowMenu(prev => !prev)}
@@ -18,7 +18,7 @@ const Header = () => {
         <nav className={`main-nav ${showMenu ? "show" : ""}`}>
           <a href="/" className="nav-link">Home</a>
           <a href="/about" className="nav-link">About</a>
-          <a href="/more-recipes" className="nav-link">More Recipes</a>
+          <a href="/comingsoon" className="nav-link">More Recipes</a>
         </nav>
       </div>
     </header>

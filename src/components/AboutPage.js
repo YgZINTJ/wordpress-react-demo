@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import SignupBar from "./SignupBar";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -7,10 +5,8 @@ import "../styles/AboutPage.css"; // Adjust the path if needed
 const AboutPage = () => {
   return (
   <>
-    {/* === Signup-bar ===*/}
     <SignupBar/> 
 
-    {/* ===Header Navigation=== */}
     <Header/>
 
     {/* === Main === */}
@@ -26,13 +22,12 @@ const AboutPage = () => {
       <div className="about-card2">
         <p>
           However, the website is not partially finished as time is running out. 
-          Some pages such as the Recipe product page are not fully functional, as technoics using to create them are alreat shown in other pages.
+          Some pages such as the Recipe product page are not fully functional, as technoics using to create them are already shown in other pages.
         </p>
       </div>
-    </div>
-    
-    {/* === Footer === */}
+
     <Footer/>
+    </div>
   </>
   );
 };

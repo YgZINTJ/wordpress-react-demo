@@ -4,6 +4,7 @@
   background-color: white;
   border-bottom: 1px solid #eee;
 }
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -11,11 +12,14 @@
   padding: 16px 20px;
   position: relative;
 }
+
 .logo {
   height: 40px;
   width: 40px;
   border-radius: 50%;
 }
+
+/* === Navigation Toggle === */
 .nav-toggle {
   display: none;
   font-size: 28px;
@@ -23,25 +27,30 @@
   border: none;
   cursor: pointer;
 }
+
+/* === Main Navigation === */
 .main-nav {
   display: flex;
   gap: 20px;
 }
+
 .nav-link {
   text-decoration: none;
   font-weight: 600;
   color: #333;
 }
+
 .nav-link:hover {
   color: #aa4465;
 }
 
-/* === MOBILE NAV === */
+/* === Mobile Styling === */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
   }
- .main-nav {
+
+  .main-nav {
     display: none;
     flex-direction: column;
     position: absolute;
@@ -58,10 +67,11 @@
     pointer-events: none;
     transition: all 0.25s ease-in-out;
   }
+
   .main-nav.show {
     display: flex;
-  }
-  .main-nav .nav-link {
-    padding: 10px 20px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scaleY(1);
   }
 }

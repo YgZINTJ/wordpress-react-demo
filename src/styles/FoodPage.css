@@ -130,3 +130,36 @@
 .foodpage-right a:hover {
   text-decoration: underline;
 }
+
+/* === RIGHT BLOCK === */
+.ingredient-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ingredient-checklist label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background-color: #fffdf8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.ingredient-checklist label:hover {
+  background-color: #fef0dc;
+}
+
+.ingredient-checklist input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #f3b85b;
+}
+

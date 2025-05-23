@@ -6,104 +6,92 @@ import Footer from './Footer';
 import SignupBar from "./SignupBar";
 
 const FoodPage = () => {
-  const { id } = useParams(); // Get ID from route
+  const { id } = useParams();
   const [foodData, setFoodData] = useState(null);
-  useEffect(() => {
-  fetch(`https://isys3004project2.local/wp-json/wp/v2/food/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      const contentHTML = data.content.rendered;
-      const item = {
-        name: data.title.rendered,
-        image: data.featured_media_url,
-        steps: sanitizeSteps(contentHTML),
-        story: extractStory(contentHTML),
-        externalLinks: extractLinks(contentHTML),
-      };
-      setFoodData(item);
-    })
-    .catch((err) => console.error("Failed to fetch food item", err));
-}, [id]);
-  // Helper: Sanitize HTML content
-  const sanitizeSteps = (html) => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, "text/html");
-  const story = doc.querySelector(".story");
-  if (story && story.parentNode) {
-    story.parentNode.removeChild(story);
-  }
-  doc.querySelectorAll("img, a").forEach(el => el.remove());
-  return doc.body.innerHTML || "<p>No steps found.</p>";
-};
+  const [checklistHtml, setChecklistHtml] = useState(""); // new state
 
-  // Helper: Extract story from HTML content
+  useEffect(() => {
+    fetch(`https://isys3004project2.local/wp-json/wp/v2/food/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const contentHTML = data.content.rendered;
+
+        // 🔻 Split based on checklist marker
+        const [instructionsHtml, checklistHtml] = contentHTML.split("<!-- INGREDIENT CHECKLIST START -->") || [];
+        const item = {
+          name: data.title.rendered,
+          image: data.featured_media_url,
+          steps: sanitizeSteps(instructionsHtml),
+          story: extractStory(instructionsHtml),
+        };
+
+        setFoodData(item);
+        setChecklistHtml(checklistHtml || ""); // fallback if no split
+      })
+      .catch((err) => console.error("Failed to fetch food item", err));
+  }, [id]);
+
+  const sanitizeSteps = (html) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const story = doc.querySelector(".story");
+    if (story && story.parentNode) {
+      story.parentNode.removeChild(story);
+    }
+    doc.querySelectorAll("img, a").forEach(el => el.remove());
+    return doc.body.innerHTML || "<p>No steps found.</p>";
+  };
+
   const extractStory = (html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
     const storyDiv = doc.querySelector(".story");
     return storyDiv ? storyDiv.outerHTML : "<p>No story available.</p>";
-};
-  // Helper: Extract external links from HTML content
-  const extractLinks = (html) => {
-    const links = [];
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    doc.querySelectorAll("a").forEach((a) => {
-      links.push({ href: a.href, text: a.innerText });
-    });
-    return links;
   };
 
   if (!foodData) return <p>Loading...</p>;
-    return (
-  <>
-    {/* === TOP SIGNUP BAR === */}
-    <SignupBar/>
-    {/* === HEADER === */}
-    <Header/>
 
-    {/* === MAIN PAGE === */}
-    <div className="foodpage-container">
-      <div className="foodpage-content">
-        {/* === LEFT BLOCK === */}
-        <div className="foodpage-left">
-          <img src={foodData.image} alt={foodData.name} />
-          <div className="food-story">
-            <h4 className="story-heading">Origin Story</h4>
-            <div dangerouslySetInnerHTML={{ __html: foodData.story }} />
+  return (
+    <>
+      <SignupBar />
+
+      <Header />
+
+      <div className="foodpage-container">
+        <div className="foodpage-content">
+          {/* LEFT */}
+          <div className="foodpage-left">
+            <img src={foodData.image} alt={foodData.name} loading="lazy"/>
+            <div className="food-story">
+              <h4 className="story-heading">Origin Story</h4>
+              <div dangerouslySetInnerHTML={{ __html: foodData.story }} />
+            </div>
           </div>
-        </div>
-        {/* === MIDDLE BLOCK === */}
-        <div className="foodpage-middle">
-          <section className="hero-banner">
-            <h1 className="hero-title">{foodData.name}</h1>
-          </section>
-          <div className="recipe-steps">
-            <div
-              className="steps-content"
-              dangerouslySetInnerHTML={{ __html: foodData.steps }}
-            />
+
+          {/* MIDDLE */}
+          <div className="foodpage-middle">
+            <section className="hero-banner">
+              <h1 className="hero-title">{foodData.name}</h1>
+            </section>
+            <div className="recipe-steps">
+              <div
+                className="steps-content"
+                dangerouslySetInnerHTML={{ __html: foodData.steps }}
+              />
+            </div>
           </div>
-        </div>
-        {/* === RIGHT BLOCK === */}
-        <div className="foodpage-right">
-          <h3>Buy Ingredients</h3>
-          <ul>
-            {foodData.externalLinks.map((link, index) => (
-              <li key={index}>
-                <a href={link.href} target="_blank" rel="noreferrer">
-                  {link.text || "External Link"}
-                </a>
-              </li>
-            ))}
-          </ul>
+
+          {/* RIGHT */}
+          <div className="foodpage-right">
+            <h3>Ingredient Checklist</h3>
+            <div className="ingredient-checklist" dangerouslySetInnerHTML={{ __html: checklistHtml }} />
+          </div>
         </div>
       </div>
-    </div>
-    {/* === FOOTER ===*/}
-    <Footer/>
-  </>
-);
+
+      <Footer />
+    </>
+  );
 };
 
 export default FoodPage;

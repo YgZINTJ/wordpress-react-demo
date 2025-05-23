@@ -1,5 +1,5 @@
 
-import logo from '../assets/diet.png'; // adjust if needed
+
 import '../styles/ComingSoon.css'; // ensure you create this
 import React, { useEffect, useState } from "react";
 import Footer from './Footer';
@@ -7,7 +7,6 @@ import Header from './Header';
 
 
 const ComingSoonPage = () => {
-  const [showMenu, setShowMenu] = useState(false);
   return (
       <>
         {/* ✅ Top Thank You Bar */}

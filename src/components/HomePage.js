@@ -44,16 +44,14 @@ const HomePage = () => {
   return (
     <div className="homepage-wrapper">
 
-      {/* Top Sign-Up Bar (full width, stays outside container) */}
       <SignupBar/>
 
-      {/* Header Navigation */}
       <Header/>
 
       {/* Hero Bar */}
       <section className="hero-banner">
         <div className="content-container">
-          <h2 className="hero-title">Simple Asian Cuisine</h2>
+          <h2 className="hero-title">Authentic Asian Cuisine</h2>
         </div>
       </section>
 
@@ -75,7 +73,7 @@ const HomePage = () => {
               aria-label={`View recipe: ${item.name}`}
             >
               <div className="food-image-container">
-                <img src={item.image} alt={item.name} />
+                <img src={item.image} alt={item.name} loading="lazy" />
                 <div className="overlay-text">View Recipe</div>
               </div>
               <p className="food-name">{item.name}</p>
@@ -107,6 +105,7 @@ const HomePage = () => {
                     src={item.image}
                     alt={item.name}
                     className="category-image"
+                    loading="lazy"
                   />
                   <div className="overlay-text">{item.name}</div>
                 </div>
@@ -118,8 +117,9 @@ const HomePage = () => {
           ))}
         </div>
       </section>
-      {/* Footer with Signup */}
+
       <Footer/>
+
     </div>
   );
 };
