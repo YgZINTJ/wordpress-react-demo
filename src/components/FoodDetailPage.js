@@ -11,7 +11,7 @@ const FoodPage = () => {
   const [checklistHtml, setChecklistHtml] = useState(""); // new state
 
   useEffect(() => {
-    fetch("https://aliceblue-viper-829683.hostingersite.com/wp-json/wp/v2/food/${id}")
+    fetch(`https://aliceblue-viper-829683.hostingersite.com/wp-json/wp/v2/food/${id}`)
       .then((res) => res.json())
       .then((data) => {
         const contentHTML = data.content.rendered;
