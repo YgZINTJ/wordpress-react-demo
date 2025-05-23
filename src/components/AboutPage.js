@@ -14,7 +14,7 @@ const AboutPage = () => {
       <div className="about-card">
         <h1>About This Project</h1>
         <p>
-          This website was created as part of a ISYS3004 assessment 2 project. It's built using React, WordPress REST API, and Firebase.  
+          This website was created as part of a ISYS3004 assessment 2 project. It's built using React, WordPress CMS, and REST API.  
           The goal is to provide a sloid proof of understanding how to use these technologies to create a functional webpage.
         </p>
       </div>
