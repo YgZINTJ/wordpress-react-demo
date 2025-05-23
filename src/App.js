@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage"; // adjust the path if needed
-import FoodPage from "./components/Foodpage"; // adjust the path if needed
+import FoodPage from "./components/FoodDetailPage"; // adjust the path if needed
 import ProductPage from "./components/Product"; // adjust the path if needed
 import AboutPage from "./components/AboutPage"; // adjust the path if needed
 import ComingSoonPage from "./components/ComingSoon"; // adjust the path if needed
